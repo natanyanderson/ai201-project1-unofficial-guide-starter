@@ -83,7 +83,7 @@ If cost didn't matter, I would use a larger model because MiniLM's 256-token win
 
 | # | Question | Expected answer |
 |---|----------|-----------------|
-| 1 | Who teaches Data Structures at Mercy and what do students say about them? | Sisi Li. The single review says she doesn't know how to explain concepts properly | 
+| 1 | Who teaches Object/Structure/Algorithm I at Mercy and what do students say about them? | Sisi Li. The single review says she doesn't know how to explain concepts properly | 
 | 2 | What courses do I need to take in my second semester as a CS major? | ENGL112 Written Engl and Lit Studies II, MATH201 Precalculus, CISC131 Foundations of Computing I, COMM110 Oral Communication, Gen Ed | 
 | 3 | How is Samer Almazahreh as a professor at Mercy College? | Mixed reviews, some students say not to take him because he is terrible and others say he is knowledgeable and supportive |
 | 4 |  What is the corequisite or prerequisite for the Artificial Intelligence class at Mercy College? | CISC339 Artificial Intelligence requires CISC231 (Foundations of Computing II) and MATH244 (Discrete Structures) as prerequisites | 

@@ -1,0 +1,93 @@
+Source: Mercy University Course Catalog
+
+---
+Course: CISC339
+Title: Artificial Intelligence
+Description: This course provides a broad technical introduction and a survey of core concepts of artificial intelligence (AI). Topics include history of AI, search (search space, uninformed and informed search, constraint satisfaction), logic reasoning (probabilistic models, uncertainty, Bayesian networks), machine learning (inductive learning, decision trees, reinforcement learning), and perception and cognition (natural language processing, computer vision, robotics). AI techniques have become an essential element in modern computer software and are thus essential for a successful career and advanced studies in computer science.
+Prerequisites: CISC231/MATH231 and MATH244
+Credits: 3
+
+---
+Course: CISC510
+Title: Theoretical Concepts in CS
+Description: This course is an introduction to the theoretical concepts in Computer Science. Concepts include logic, proofs, relations, functions, counting, probability, regular, context-free, and computable (recursive) languages with finite state machines, pushdown automata, and Turing machines, along with basic concepts of computability theory and NP-theory.
+Prerequisites: None
+Credits: 3
+
+---
+Course: CISC599
+Title: Ind. Study in Computer Science
+Description: This course is a placeholder for students who are interested in pursuing an independent topic or area in Computer Science under the supervision of a faculty member. The course will be offered as needed. Students can register for this course multiple times as long as the subject areas are different. The student needs to get permission from the Program Director to register for this course. This course is counted as a major elective course.
+Prerequisites: None
+Credits: 1-3
+
+---
+Course: CISC381
+Title: Co-op Computer Science II
+Description: This course is designed to link college with the professional world by students obtaining meaningful, academically relevant workplace experiences. Possible workplace sites for students in CS and CIS include corporations, small businesses, nonprofit organizations and schools. Professional development is enhanced through meetings with a faculty advisor and structured assignments based on the workplace experience. Career and Professional Development department approval required. Department approval required.
+Prerequisites: None
+Credits: 3
+
+---
+Course: CISC471
+Title: Sftwr Engrg II:Snr Cpstn Prj
+Description: This is the second course in the Software Engineering sequence. Students apply the principles of software engineering in real-world projects. In this capstone course for Computer Science majors, students will learn to work as a team in the development of small to medium-scale software systems.
+Prerequisites: CISC371 with grade of C.
+Credits: 3
+
+---
+Course: CISC600
+Title: Computer Science Thesis
+Description: Students conduct a significant research study on a chosen topic with the guidance of a faculty advisor. The student defines the research problem, conducts the relevant literature review, and develops the research thesis. The thesis must demonstrate the student's proficiency in the subject matter. A fully-developed thesis report and an oral defense of the proposal and the thesis are required.
+Prerequisites:  Approval of Program Director.
+Credits: 3
+
+---
+Course: CISC395
+Title: Special Topics Comp Info Systm
+Description: This course will introduce students to various relevant, current and interesting topics in the field of computer science and/ or computing.
+Prerequisites: Variable, depending upon topic.
+Credits: 3
+
+---
+Course: CISC515
+Title: Software Design & Development
+Description: Students will learn the principles of software design and development, and software engineering. Topics to be covered include software design and processes, requirements and specifications, software validation and testing strategies, software evolution, project management, documentation, and quality assurance. Upon completion of the course, students should have a fundamental understanding of the software life cycle and the processes involved in the design, development, implementation and maintenance of complex software systems, and the associated documentation of design, program and training materials, as well as an understanding and development of the interpersonal and communication skills required for a career in computer science.
+Prerequisites: CISC505
+Credits: 3
+
+---
+Course: CISC590
+Title: Internship in Computer Science
+Description: In this internship course, students will work under the supervision of a company in software development, data science, or other related Computer Science projects. The evaluation of the student's work should be submitted by the company to the Program Director, and a detailed report of the internship project should be submitted by the student. Students will register for this course only with the approval of the Program Director.
+300 hours of total involvement in the company project(s).
+Prerequisites: None
+Credits: 3
+
+---
+Course: CISC595
+Title: Special Topics in Comp Sci
+Description: Students are introduced to various current, relevant and interesting topics in Computer Science. Students can register for this course multiple times as long as the subject areas are different. This course is counted as a major elective course.
+Prerequisites: None
+Credits: 3
+
+---
+Course: CISC380
+Title: Co-op Computer Science I
+Description: This course is designed to link college with the professional world by students obtaining meaningful, academically relevant workplace experiences. Possible workplace sites for students in CS and CIS include corporations, small businesses, nonprofit organizations and schools. Professional development is enhanced through meetings with a faculty advisor and structured assignments based on the workplace experience. Career and Professional Development department approval required. Department approval required.
+Prerequisites: None
+Credits: 3
+
+---
+Course: CISC371
+Title: Sftwr Engineering I:Principles
+Description: Students will learn the principles of software engineering. Topics to be covered include software design and processes, requirements and specifications, software validation and testing strategies, software evolution, project management, documentation, and quality assurance. Upon completion of the course, students should have a fundamental understanding of the software life cycle and the processes involved in the design, development, implementation and maintenance of complex software systems, and the associated documentation of design, program and training materials, as well as an understanding and development of the interpersonal and communication skills required for a career in computer science.
+Prerequisites: CISC311
+Credits: 3
+
+---
+Course: MATH244
+Title: Discrete Structures
+Description: Introduction to the mathematical foundation of computer science. Logic, set theory, switching circuits, Boolean algebra, finite state machines, induction, combinatorics, graphs and trees are some of the topics that will be covered.
+Prerequisites: MATH201
+Credits: 3

@@ -1,0 +1,121 @@
+Source: Coursicle - Mercy University CISC Courses
+
+---
+Course: CISC120
+Title: Intro Computers/App Software
+Recent Professors: Angelo Ordonez, Brian Landin, Yun Wang, Christian Villalobos, Samer Almazahreh, Franklyn Williamson, Jan Yablow, Susmita Kha, Jaspreet Singh, Dilip Kha, Olivera Stankovic, Robert Caluori, Gayathri Banavara, Narasimhaswamy Banavara, Charles Li, John Marchan
+Recent Semesters: Fall 2026, Spring 2026, Fall 2025, Spring 2025, Fall 2024
+Credits: 3
+Description: An introduction to computers and computing including the fundamentals of computer nomenclature, particularly with respect to personal computer hardware and software and the World Wide Web; develop an understanding of why computers are essential components in the business world and society in general; focus on the computer as a valuable productivity tool; present strategies for purchasing, and maintaining a personal computer system. This course has a wide-ranging hands-on lab component, which includes an introduction to and actual use of; word processing, spreadsheet, presentation, and Internet browser software.
+
+---
+Course: CISC131
+Title: Foundations of Computing I
+Recent Professors: Somaieh Bahrami, Jerry Yu, Agnideven PalanisamySundar, Sisi Li, Tianyu Wang, John Yoon, Narasimhaswamy Banavara, Yun Wang
+Recent Semesters: Fall 2026, Spring 2026, Fall 2025, Spring 2025, Fall 2024
+Credits: 3
+Description: In Foundations of Computing I, students will be introduced to the basic aspects of problem solving, data representation, algorithm design, and object-oriented design and programming. The Python programming language will be used as the means to implement programs. This course prepares students for problem analysis and solution design. Students will also discuss ethical and social issues relating to computing.
+
+---
+Course: CISC219
+Title: Web Design I: HTML/CSS
+Recent Professors: Ralph Sullender
+Recent Semesters: Fall 2025
+Credits: 3
+Description: This course focuses on core HTML and CSS skills, which are the underlying components of all websites. After a series of exercises, students will apply these skills in creating contemporary, responsive web sites that are legible across devices (desktop, mobile, tablet). The course also examines using third-party resources to simplify the design process. By the end of the semester, students will be expected to create an original web site, with attention to design fundamentals such as hierarchy, color, and typography.
+
+---
+Course: CISC231
+Title: Foundations of Computing II
+Recent Professors: Somaieh Bahrami, Jerry Yu, Sisi Li, Narasimhaswamy Banavara, Yun Wang
+Recent Semesters: Fall 2026, Spring 2026, Fall 2025, Spring 2025, Fall 2024
+Credits: 3
+Description: This course explores the fundamental concepts of object-oriented programming using the programming language Java. Students are introduced to the principles of object-oriented programming, basic data structures, elementary file input/ output, inheritance, polymorphism, exception handling and GUI.
+
+---
+Course: CISC235
+Title: Ethics in Communication Technology
+Recent Professors: Benjamin Abelson, Keith Medelis
+Recent Semesters: Fall 2026, Fall 2025
+Credits: 3
+Description: Communication technology has radically developed and transformed over the past century at a constantly accelerating pace especially within the last few decades. Not only have the means of communication evolved, from telephones, to email, to social media, etc., but what was once an activity that humans seemingly performed exclusively with other humans (and maybe some animals) has now become something that connects humans with non-living beings such as automated response systems, computer generated artifacts, and artificial intelligences (AI). This course serves as an introduction to the ethical issues that arise due to these transformations, including questions about manipulation, privacy, and human value. We will also touch on metaphysical and epistemological questions that are intertwined with the ethical concerns, such as the nature of personhood, free will, and authenticity, as we explore the brave new world that advances in communication technology are continuously creating.
+
+---
+Course: CISC238 
+Title: Graph User Intrfc App/Developm
+Recent Professors: Yun Wang
+Recent Semesters: Spring 2024, Spring 2023
+Credits: 3
+Description: Section information text: The student is introduced to application development using a graphical user interface (GUI). Topics include: graphics user interface design, properties of interface objects, attaching code to interface objects, developing and running entire applications using graphics and drawing, and building and updating databases.
+
+---
+Course: CISC311
+Title: Object/Structure/Algorithm I
+Recent Professors: Sisi Li
+Recent Semesters: Fall 2026, Spring 2026, Fall 2025, Spring 2025, Fall 2024
+Credits: 3
+Description: This course builds upon the Foundations of Computing courses and presents concepts and techniques essential for working in a modern software development environment. These include object-oriented programming, exception handling, linear and nonlinear data structures, and data structure libraries. Software engineering and object-oriented design concepts are discussed using case studies and software projects.
+
+---
+Course: CISC335
+Title: Computer Network II
+Recent Professors: Shabad Sood, Yves Delphin
+Recent Semesters: Fall 2026, Spring 2026, Fall 2025, Spring 2025, Fall 2024
+Credits: 3
+Description: The course explores the fundamental concepts of Computer Networks. Topics to be covered include the overview of internet technologies, network architecture, application layer, transport layer, network layer, linked layer and local area network, network management, wireless and mobile networks and multimedia networking. Network security will be introduced. Lab activities will provide students practical experiences in computer networking. It will be centered on implementation, configuration and troubleshooting of a LAN.
+
+---
+Course: CISC339
+Title: Artificial Intelligence
+Recent Professors: Tianyu Wang
+Recent Semesters: Fall 2026, Spring 2026, Fall 2025, Spring 2025, Fall 2024
+Credits: 3
+Description: This course provides a broad technical introduction and a survey of core concepts of artificial intelligence (AI). Topics include history of AI, search (search space, uninformed and informed search, constraint satisfaction), logic reasoning (probabilistic models, uncertainty, Bayesian networks), machine learning (inductive learning, decision trees, reinforcement learning), and perception and cognition (natural language processing, computer vision, robotics). AI techniques have become an essential element in modern computer software and are thus essential for a successful career and advanced studies in computer science.
+
+---
+Course: CISC341
+Title: Computer Architecture
+Recent Professors: Avinash Kumar, Samer Almazahreh, Sisi Li
+Recent Semesters: Fall 2026, Spring 2026, Fall 2025, Spring 2025, Fall 2024
+Credits: 3
+Description: This course provides the basic knowledge necessary to understand the hardware operation of digital computers, introduces digital components and details the steps necessary to create a design for an elementary basic computer. The organization and architecture of the separate functional units of the digital computer, as well as the assembly level machine organization, are examined.
+
+---
+Course: CISC371
+Title: Sftwr Engineering I:Principles
+Recent Professors: Narasimhaswamy Banavara
+Recent Semesters: Fall 2026, Fall 2025, Fall 2024, Fall 2023
+Credits: 3
+Description: Students will learn the principles of software engineering. Topics to be covered include software design and processes, requirements and specifications, software validation and testing strategies, software evolution, project management, documentation, and quality assurance. Upon completion of the course, students should have a fundamental understanding of the software life cycle and the processes involved in the design, development, implementation and maintenance of complex software systems, and the associated documentation of design, program and training materials, as well as an understanding and development of the interpersonal and communication skills required for a career in computer science.
+
+---
+Course: CISC411
+Title: Object/Structure/Algorithm II
+Recent Professors: Sisi Li
+Recent Semesters: Fall 2026, Spring 2026, Fall 2025, Spring 2025, Fall 2024
+Credits: 3
+Description: Students will study fundamental algorithms for solving a variety of problems, including sorting, searching, and graph algorithms. They will also learn techniques for analyzing the time and space complexity of algorithms and evaluate tradeoffs between different algorithms.
+
+---
+Course: CISC421
+Title: Operating Systems
+Recent Professors: Angelo Ordonez
+Recent Semesters: Fall 2026, Spring 2026, Fall 2025, Spring 2025, Fall 2024
+Credits: 3
+Description: Process concepts, asynchronous concurrent processes, concurrent programming, deadlock, real storage, virtual storage organization, virtual storage management, job and processor scheduling, multiprocessing, disk scheduling, file and database systems, performance measurement, networks and security are covered.
+
+---
+Course: CISC471
+Title: Sftwr Engrg II:Snr Cpstn Prj
+Recent Professors: Narasimhaswamy Banavara
+Recent Semesters: Spring 2026, Spring 2025, Spring 2024, Spring 2023
+Credits: 3
+Description: Section information text: This is the second course in the Software Engineering sequence. Students apply the principles of software engineering in real-world projects. In this capstone course for Computer Science majors, students will learn to work as a team in the development of small to medium-scale software systems. 
+
+---
+Course: CISC360
+Title: Game Design I
+Recent Professors: Ralph Sullender
+Recent Semesters: Fall 2024
+Credits: 3
+Description: This course provides an introduction to the utilization of the game engine, Unreal, to construct immersive, navigable virtual environments. Fundamental game design skills, including lighting techniques, 3D modeling, texturing, interactive elements, and graphic interfaces, will be employed. Students will explore the diverse applications of these approaches beyond the realm of video games, extending to fields such as architectural visualization, television production, and virtual reality.
