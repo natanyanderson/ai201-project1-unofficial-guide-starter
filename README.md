@@ -105,11 +105,11 @@ Preprocessing happens during ingestion. My ingestion script cleans documents bef
 
 | # | Question | Expected answer | System response (summarized) | Retrieval quality | Response accuracy |
 |---|----------|-----------------|------------------------------|-------------------|-------------------|
-| 1 | | | | | |
-| 2 | | | | | |
-| 3 | | | | | |
-| 4 | | | | | |
-| 5 | | | | | |
+| 1 | Who teaches Object/Structure/Algorithm I at Mercy and what do students say about them? | Sisi Li, single review says can't explain concepts | Sisi Li teaches CISC311. No student review in context. | Partially relevant | Partially accurate |
+| 2 | What courses do I need to take in my second semester as a CS major? | ENGL112, MATH201, CISC131, COMM110, Gen Ed | Exactly correct, Year 1 Spring listed | Relevant | Accurate |
+| 3 | How is Samer Almazahreh as a professor at Mercy College? | Mixed reviews | Mixed reviews, specific quotes cited | Relevant | Accurate |
+| 4 | What is the corequisite or prerequisite for the Artificial Intelligence class at Mercy College? | CISC231/MATH231 and MATH244 | Exactly correct, Prerequisites are CISC231/MATH231 and MATH244, sourced from catalog | Relevant | Accurate |
+| 5 | Does Mercy College have any Game Design classes? | Yes, Game Design I | "I don't have enough information" | Off-target | Inaccurate |
 
 **Retrieval quality:** Relevant / Partially relevant / Off-target  
 **Response accuracy:** Accurate / Partially accurate / Inaccurate
@@ -130,13 +130,13 @@ Preprocessing happens during ingestion. My ingestion script cleans documents bef
      results from an unrelated review" is an explanation. -->
 
 **Question that failed:**
-
+Does Mercy have any Game Design classes?
 **What the system returned:**
-
+I don't have enough information in my sources to answer that.
 **Root cause (tied to a specific pipeline stage):**
-
+The failure is at the retrieval stage. The query "Does Mercy have any Game Design classes" returned 4 RMP professor reviews with distances between 0.50 and 0.55. Zero course chunks. CISC360 Game Design I exists in my Coursicle file and was ingested correctly (15 Coursicle chunks including CISC360), but it didn't surface at all. This happened because when searching for "Game Design classes," the embedding model finds chunks that are semantically close to "class" and "teaching" which describes almost every RMP review. The word "class" in the query is pulling RMP chunks about classes in general, not the specific course CISC360. The embedding model (all-MiniLM-L6-v2) is a general-purpose model that doesn't know "Game Design classes" at a university is specifically asking about course catalog entries. This is the source-skew failure I predicted in Anticipated Challenge #1 — 88 of 124 chunks are RMP reviews, so the embedding space is dominated by professor-opinion text and course-existence queries get drowned out.
 **What you would change to fix it:**
-
+I can either do metadata filtering that lets me query only Coursicle/catalog chunks when the question is about course existence or adding more course-type chunks to rebalance the corpus.
 ---
 
 ## Spec Reflection
@@ -145,9 +145,9 @@ Preprocessing happens during ingestion. My ingestion script cleans documents bef
      Answer both questions with at least 2–3 sentences each. -->
 
 **One way the spec helped you during implementation:**
-
+It helped me be more efficient and lay out my thoughts. Like when I prompted Claude for ingestion code, I handed it the Documents table and Chunking Strategy and got good, useful code back. I would not have been able to get useful code if I had not handed Claude context about my project. 
 **One way your implementation diverged from the spec, and why:**
-
+The catalog source turned out not to be scrapeable so I had to manually copy-paste instead of writing a scraper. The Mercy catalog uses JavaScript rendering, so a standard HTTP scraper would have returned an empty page so manual copy-paste was the only reliable option. I did this to get the correct answers and format instead of trying to take a shortcut I knew wouldn't even work. 
 ---
 
 ## AI Usage
@@ -164,11 +164,17 @@ Preprocessing happens during ingestion. My ingestion script cleans documents bef
 **Instance 1**
 
 - *What I gave the AI:*
+ I gave Claude my Documents table, Chunking Strategy, and example files, and asked it to write three ingestion functions. 
 - *What it produced:*
+It produced an ingestion script with PDF parsing code. The first version treated the two-column PDF layout as a single table, merging Fall and Spring semester courses onto the same row, giving only 4 requirements chunks instead of 8.
 - *What I changed or overrode:*
+I caught the two-column layout bug, leading to a second iteration where I specified I caught a bug and what I was looking for. 
 
 **Instance 2**
 
 - *What I gave the AI:*
+I gave Claude my Retrieval Approach section
 - *What it produced:*
+It produced a ChromaDB embedding and retrieval script using all-MiniLM-L6-v2 with a persistent local collection and a retrieve(query, k=4) function.
 - *What I changed or overrode:*
+It caught the cosine distance issue and added a truncation warning I hadn't asked for. I accepted the cosine distance suggestion since it made distance scores easier to interpret. I left DISTANCE_THRESHOLD as None because I wanted to see real retrieval results before picking a cutoff.
