@@ -68,6 +68,43 @@ Preprocessing happens during ingestion. My ingestion script cleans documents bef
 
 ---
 
+## Sample Chunks
+
+The following 5 chunks are representative samples from the 124 total chunks in the corpus, one from each source type.
+
+**Chunk 1 — RMP (Samer Almazahreh)**
+Source: https://www.ratemyprofessors.com/professor/1725736
+> Student review of Professor Samer Almazahreh (Mercy University):
+> I really enjoyed this online class. The professor was knowledgeable, supportive, and made the material easy to understand despite the virtual format. Lectures were clear, assignments were fair, and feedback was always helpful. One of the best online learning experiences I've had.
+
+**Chunk 2 — Coursicle (CISC120)**
+Source: https://www.coursicle.com/mercy/courses/CISC/120/
+> CISC120 Intro Computers/App Software (3 credits)
+> Recently taught by: Angelo Ordonez, Brian Landin, Yun Wang, Christian Villalobos, Samer Almazahreh...
+> Recently offered: Fall 2026, Spring 2026, Fall 2025, Spring 2025, Fall 2024
+> An introduction to computers and computing including the fundamentals of computer nomenclature...
+
+**Chunk 3 — Catalog (CISC339)**
+Source: https://ug.catalog.mercy.edu/courses?page=1&cq=computer+science
+> CISC339 Artificial Intelligence (3 credits)
+> Prerequisites: CISC231/MATH231 and MATH244
+> This course provides a broad technical introduction and a survey of core concepts of artificial intelligence (AI)...
+
+**Chunk 4 — Requirements PDF (Year 1 Fall)**
+Source: https://mercy.edu/media/2024-2025-bs-computer-science
+> Year 1 Fall — BS Computer Science required courses:
+> ENGL111 Written Engl and Lit Studies I | 3 | x
+> CINQ101 Critical Inquiry | 3 | x
+> MATH116 College Algebra | 3 | x | B or Higher
+> CISC120 Intro Computers & App Software | 3 | x
+
+**Chunk 5 — RMP (Samer Almazahreh, second review)**
+Source: https://www.ratemyprofessors.com/professor/1725736
+> Student review of Professor Samer Almazahreh (Mercy University):
+> I really enjoyed this online class... I had to study hard to earn my grade.
+
+Both RMP samples are from the same professor due to random sampling; 7 different professors are represented across 88 total RMP chunks.
+
 ## Embedding Model
 
 <!-- Name the embedding model you used and explain your choice.
@@ -77,10 +114,40 @@ Preprocessing happens during ingestion. My ingestion script cleans documents bef
      latency, and local vs. API-hosted. -->
 
 **Model used:**
-
+Using MiniLM because it runs locally and it was given to us.
 **Production tradeoff reflection:**
+If cost didn't matter, I would use a larger model because MiniLM's 256-token window might be too small for semester blocks, so I would use a bigger model that handles higher tokens to make sure no chunks get cut off. All sources are English so I don't need multilingual support. For domain-specific accuracy, my sources have two very distinct styles, so a more powerful or specialized model might handle these differences better than the general MiniLM.
+---
+
+## Retrieval Test Results
+
+**Query 1:** "Who teaches Object Structure Algorithm I at Mercy and what do students say about them?"
+- [0.46] Coursicle — CISC311: Object/Structure/Algorithm I, taught by Sisi Li ✓
+- [0.46] Coursicle — CISC411: Object/Structure/Algorithm II, taught by Sisi Li (related but not exact)
+- [0.48] RMP — Marion Ben-Jacob: unrelated review ✗
+- [0.49] RMP — Samer Almazahreh: unrelated review ✗
+
+Chunks 1–2 correctly identify Sisi Li as the instructor. Chunks 3–4 are off-target RMP reviews pulled in because the query contains "students say." Sisi Li's own RMP review didn't surface in top 4, so the system couldn't answer the review portion of the question.
 
 ---
+
+**Query 2:** "What courses do I need in my second semester as a CS major?"
+- [0.37] Requirements PDF — Year 2 Fall ✓
+- [0.39] Requirements PDF — Year 2 Spring ✓
+- [0.41] Requirements PDF — Year 1 Fall ✓
+- [0.42] Requirements PDF — Year 1 Spring ✓ (correct answer)
+
+All 4 chunks are from the correct source. The correct answer (Year 1 Spring) ranked 4th because "second semester" is ambiguous — the LLM still identified the right answer from the context.
+
+---
+
+**Query 3:** "What is the prerequisite for Artificial Intelligence at Mercy?"
+- [0.54] Catalog — CISC339: prereqs CISC231/MATH231 and MATH244 ✓
+- [0.54] Coursicle — CISC339: course description ✓
+- [0.60] RMP — Brian Landin: unrelated review ✗
+- [0.61] RMP — Marion Ben-Jacob: unrelated review ✗
+
+Correct answer is in chunk 1. Distance scores above 0.5 reflect source skew — RMP reviews dominate the embedding space.
 
 ## Grounded Generation
 
@@ -92,10 +159,78 @@ Preprocessing happens during ingestion. My ingestion script cleans documents bef
      the mechanism. -->
 
 **System prompt grounding instruction:**
+SYSTEM_PROMPT = f"""You are a question-answering assistant for Computer Science \
+students at Mercy University. You answer questions about CS courses, electives, \
+degree requirements, and professors.
+
+Answer using ONLY the information contained in the context chunks provided in the \
+user message. Obey these rules strictly:
+
+1. Use only facts stated in the context. Do NOT use outside or general knowledge.
+2. Never invent or guess details — no made-up professor names, course codes, \
+prerequisites, numbers, statistics, or reviews.
+3. If the context does not clearly contain the answer, reply with EXACTLY this \
+sentence and nothing else: "{NO_INFO}"
+4. If the context contains only ONE student review about a professor, answer from \
+that single review only. Do NOT imply a consensus and do NOT use phrases like \
+"most students," "students generally," or "reviews say" as if there were many.
+5. When reviews disagree, say so plainly (e.g. "reviews are mixed").
+6. Do NOT include URLs or source links in your answer — sources are added \
+automatically afterward.
+7. Be concise and factual."""
 
 **How source attribution is surfaced in the response:**
+The Source URLs are collected from the retrieved chunks' metadata in Python, after the LLM call completes. They are not generated by the LLM because the prompt explicitly says not to use the URLS. They appear in the "Sources" box in the Gradio UI, deduplicated and in retrieval order. 
+---
+
+## Example Responses
+
+**Query 1 — Professor review (retrieval and generation working well):**
+
+> Q: How is Samer Almazahreh as a professor at Mercy College?
+>
+> A: Reviews are mixed. Some students advise against taking his class, with one student saying "DO NOT TAKE THIS CLASS" and another saying "Don't take him." However, other students have positive opinions, with one student stating "He is always available to help" and another saying "I love Professor Almazahreh!"
+>
+> Sources:
+> - https://www.ratemyprofessors.com/professor/1725736
 
 ---
+
+**Query 2 — Factual course question (correct answer, grounded in catalog):**
+
+> Q: What is the corequisite or prerequisite for the Artificial Intelligence class at Mercy College?
+>
+> A: The prerequisites for the Artificial Intelligence class (CISC339) are CISC231/MATH231 and MATH244.
+>
+> Sources:
+> - https://ug.catalog.mercy.edu/courses?page=1&cq=computer+science
+> - https://www.coursicle.com/mercy/courses/CISC/339/
+
+---
+
+**Query 3 — Out-of-scope question (correct refusal):**
+
+> Q: What is the average GPA for a Mercy Computer Science student?
+>
+> A: I don't have enough information in my sources to answer that.
+>
+> Sources: (no relevant sources found)
+
+This query tests grounding — GPA data is not in any of the 10 sources, so the system correctly refuses rather than generating a plausible-sounding answer from general knowledge.
+
+## Query Interface
+
+The Gradio UI allows a user to type a question about Mercy CS courses, professors, or degree requirements and outputs two things: an answer grounded in the indexed sources, and the source URLs the answer was drawn from. If the system cannot answer from its sources, it returns "I don't have enough information in my sources to answer that." with no sources attached. Run with `python app.py` and open `http://127.0.0.1:7860`.
+
+**Sample interaction:**
+
+Q: How is Samer Almazahreh as a professor at Mercy College?
+
+A: Reviews are mixed. Some students advise against taking his class, with one student saying "DO NOT TAKE THIS CLASS" and another saying "Don't take him." However, other students have positive opinions, with one student stating "He is always available to help" and another saying "I love Professor Almazahreh!"
+
+Sources:
+- https://www.ratemyprofessors.com/professor/1725736
+
 
 ## Evaluation Report
 
